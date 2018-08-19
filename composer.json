@@ -1,7 +1,13 @@
 {
     "name": "neat/console",
     "description": "Neat Console components",
-    "keywords": ["console", "cli", "command", "line"],
+    "type": "library",
+    "keywords": [
+        "console",
+        "cli",
+        "command",
+        "line"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -19,7 +25,7 @@
             "Neat\\Console\\Test\\": "tests/"
         }
     },
-   "require": {
+    "require": {
         "php": ">=7.0"
     },
     "require-dev": {
