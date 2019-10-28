@@ -13,12 +13,37 @@ class OutputTest extends TestCase
      * @param resource $buffer
      * @return Output
      */
-    public function createOutput(&$buffer): Output
+    private function createOutput(&$buffer): Output
     {
         $buffer = fopen('php://memory', 'r+');
         $output = new Output($buffer);
 
         return $output;
+    }
+
+    /**
+     * Assert buffer contents
+     *
+     * @param string   $expected
+     * @param resource $buffer
+     */
+    private function assertBuffer($expected, $buffer)
+    {
+        rewind($buffer);
+        $this->assertSame($expected, fread($buffer, 1024));
+    }
+
+    /**
+     * Test write output
+     */
+    public function testWrite()
+    {
+        $output = $this->createOutput($buffer);
+        $output->write('abc');
+        $output->write('');
+        $output->write('def');
+
+        $this->assertBuffer('abcdef', $buffer);
     }
 
     /**
@@ -30,8 +55,7 @@ class OutputTest extends TestCase
         $output->line('Hello %s!', 'world');
         $output->line();
 
-        rewind($buffer);
-        $this->assertSame('Hello world!' . PHP_EOL . PHP_EOL, fread($buffer, 1024));
+        $this->assertBuffer('Hello world!' . PHP_EOL . PHP_EOL, $buffer);
     }
 
     /**
@@ -45,7 +69,6 @@ class OutputTest extends TestCase
             'world!',
         ]);
 
-        rewind($buffer);
-        $this->assertSame('Hello,' . PHP_EOL . 'world!' . PHP_EOL, fread($buffer, 1024));
+        $this->assertBuffer('Hello,' . PHP_EOL . 'world!' . PHP_EOL, $buffer);
     }
 }

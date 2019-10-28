@@ -20,6 +20,16 @@ class Output
     }
 
     /**
+     * Write bytes to output
+     *
+     * @param string $bytes
+     */
+    public function write($bytes)
+    {
+        fwrite($this->stream, $bytes);
+    }
+
+    /**
      * Write output line
      *
      * @param string $line
