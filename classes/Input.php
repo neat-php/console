@@ -12,17 +12,17 @@ class Input
     /**
      * Input constructor
      *
-     * @param resource|mixed $stream
+     * @param resource $stream
      */
-    public function __construct($stream = STDIN)
+    public function __construct($stream = null)
     {
-        $this->stream = $stream;
+        $this->stream = $stream ?? STDIN;
     }
 
     /**
      * Get input character
      *
-     * @return string
+     * @return string|null
      */
     public function character()
     {
@@ -34,7 +34,7 @@ class Input
     /**
      * Get input line
      *
-     * @return string
+     * @return string|null
      */
     public function line()
     {

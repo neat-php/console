@@ -12,11 +12,11 @@ class Output
     /**
      * Output constructor
      *
-     * @param resource|mixed $stream
+     * @param resource $stream
      */
-    public function __construct($stream = STDOUT)
+    public function __construct($stream = null)
     {
-        $this->stream = $stream;
+        $this->stream = $stream ?? STDOUT;
     }
 
     /**
