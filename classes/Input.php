@@ -20,6 +20,19 @@ class Input
     }
 
     /**
+     * Read input up until bytes
+     *
+     * @param int $bytes
+     * @return string|null
+     */
+    public function read(int $bytes)
+    {
+        $input = fread($this->stream, $bytes);
+
+        return $input === false ? null : $input;
+    }
+
+    /**
      * Get input character
      *
      * @return string|null

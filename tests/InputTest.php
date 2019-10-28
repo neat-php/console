@@ -37,6 +37,22 @@ class InputTest extends TestCase
     }
 
     /**
+     * Test read input
+     */
+    public function testRead()
+    {
+        $input = $this->createInput('abcdefghijklmnopqrstuvwxyz');
+
+        $this->assertSame('abc', $input->read(3));
+        $this->assertFalse($input->end());
+        $this->assertSame('def', $input->read(3));
+        $this->assertFalse($input->end());
+        $this->assertSame('ghijklmnopqrstuvwxyz', $input->read(1024));
+        $this->assertTrue($input->end());
+        $this->assertSame('', $input->read(1024));
+    }
+
+    /**
      * Test character input
      */
     public function testCharacter()
