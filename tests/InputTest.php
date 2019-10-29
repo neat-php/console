@@ -48,6 +48,7 @@ class InputTest extends TestCase
         $this->assertSame('def', $input->read(3));
         $this->assertFalse($input->end());
         $this->assertSame('ghijklmnopqrstuvwxyz', $input->read(1024));
+        $this->assertSame('', $input->read(1));
         $this->assertTrue($input->end());
         $this->assertSame('', $input->read(1024));
     }
