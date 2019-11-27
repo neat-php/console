@@ -16,7 +16,7 @@ class Input
      */
     public function __construct($stream = null)
     {
-        $this->stream = $stream ?? STDIN;
+        $this->stream = $stream ?? fopen('php://stdin', 'r');
     }
 
     /**

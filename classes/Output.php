@@ -16,7 +16,7 @@ class Output
      */
     public function __construct($stream = null)
     {
-        $this->stream = $stream ?? STDOUT;
+        $this->stream = $stream ?? fopen('php://stdout', 'w');
     }
 
     /**
