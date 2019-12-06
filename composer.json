@@ -3,10 +3,13 @@
     "description": "Neat Console components",
     "type": "library",
     "keywords": [
+        "neat",
         "console",
         "cli",
         "command",
-        "line"
+        "line",
+        "input",
+        "output"
     ],
     "license": "MIT",
     "authors": [
