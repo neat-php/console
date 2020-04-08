@@ -16,6 +16,10 @@
         {
             "name": "Guido van Biemen",
             "email": "guidovanbiemen@gmail.com"
+        },
+        {
+            "name": "Bauke van der Woude",
+            "email": "baukevanderwoude@hotmail.nl"
         }
     ],
     "autoload": {
@@ -29,7 +33,8 @@
         }
     },
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "neat/router": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0 || ^7.0 || ^8.0"
