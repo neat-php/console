@@ -15,7 +15,7 @@ class RouterTest extends TestCase
         $mapper = new Mapper('');
         $mapper->map(['test', 'command'])->setHandler('test-command');
         $router = new Router($mapper, new Splitter(' '));
-        $this->assertSame('test-command', $router->resolve('test command'));
+        $this->assertSame('test-command', $router->resolve(['test', 'command']));
     }
 
     public function testResolveArguments()
@@ -23,7 +23,7 @@ class RouterTest extends TestCase
         $mapper = new Mapper('');
         $mapper->map(['test', 'command', '*'])->setHandler('test-command');
         $router = new Router($mapper, new Splitter(' '));
-        $this->assertSame('test-command', $router->resolve('test command argument1 argument2', $arguments));
+        $this->assertSame('test-command', $router->resolve(['test', 'command', 'argument1', 'argument2'], $arguments));
         $this->assertSame(['argument1', 'argument2'], $arguments);
     }
 
@@ -32,7 +32,7 @@ class RouterTest extends TestCase
         $mapper = new Mapper('');
         $router = new Router($mapper, new Splitter(' '));
         $this->expectExceptionObject(new CommandNotFoundException('test command'));
-        $router->resolve('test command', $arguments);
+        $router->resolve(['test', 'command'], $arguments);
     }
 
     public function testIn()

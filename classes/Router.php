@@ -47,18 +47,17 @@ class Router
     }
 
     /**
-     * @param string     $command
+     * @param array      $argv
      * @param array|null $arguments
      * @return callable
-     * @throws CommandNotFoundException
      */
-    public function resolve(string $command, array &$arguments = null)
+    public function resolve(array $argv, array &$arguments = null)
     {
         /** @var Mapper $match */
-        foreach ($this->mapper->match($this->splitter->split($command), $arguments) as $match) {
+        foreach ($this->mapper->match($argv, $arguments) as $match) {
             return $match->getHandler();
         }
 
-        throw new CommandNotFoundException($command);
+        throw new CommandNotFoundException(implode(' ', $argv));
     }
 }
