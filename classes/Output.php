@@ -33,7 +33,7 @@ class Output
      * Write output line
      *
      * @param string $line
-     * @param array  ...$parameters
+     * @param mixed  ...$parameters
      */
     public function line($line = '', ...$parameters)
     {
