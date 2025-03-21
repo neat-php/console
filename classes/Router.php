@@ -51,7 +51,7 @@ class Router
      * @param array|null $arguments
      * @return callable
      */
-    public function resolve(array $argv, array &$arguments = null)
+    public function resolve(array $argv, ?array &$arguments = null)
     {
         /** @var Mapper $match */
         foreach ($this->mapper->match($argv, $arguments) as $match) {
