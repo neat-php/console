@@ -33,7 +33,7 @@
         }
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "neat/router": "^0.1"
     },
     "require-dev": {
