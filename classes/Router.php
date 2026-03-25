@@ -36,8 +36,8 @@ class Router
 
     /**
      * @param string   $command
-     * @param callable $handler
-     * @return Router
+     * @param callable|string $handler
+     * @return static
      */
     public function register(string $command, $handler)
     {
@@ -49,7 +49,7 @@ class Router
     /**
      * @param array      $argv
      * @param array|null $arguments
-     * @return callable
+     * @return callable|string
      */
     public function resolve(array $argv, ?array &$arguments = null)
     {
